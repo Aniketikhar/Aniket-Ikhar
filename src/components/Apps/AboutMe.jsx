@@ -1,113 +1,207 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaCertificate, FaLaptopCode } from 'react-icons/fa';
+import { 
+  FaGithub, 
+  FaLinkedin, 
+  FaTwitter, 
+  FaEnvelope, 
+  FaMapMarkerAlt, 
+  FaDownload,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaCode,
+  FaGraduationCap,
+  FaBriefcase,
+  FaTrophy,
+  FaRocket,
+  FaStar
+} from 'react-icons/fa';
+import { 
+  SiMongodb, 
+  SiExpress, 
+  SiJavascript, 
+  SiTypescript, 
+  SiTailwindcss,
+  SiNextdotjs,
+  SiCplusplus
+} from 'react-icons/si';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/AboutMe.css';
 
+// Import gallery images
+import img1 from '../../assets/gallary/GlanceAi_-123611092.webp';
+import img2 from '../../assets/gallary/GlanceAi_-39941883.webp';
+import img3 from '../../assets/gallary/GlanceAi_-615309033.webp';
+import img4 from '../../assets/gallary/GlanceAi_190436750.webp';
+import img5 from '../../assets/gallary/GlanceAi_535933890.webp';
+import img6 from '../../assets/gallary/GlanceAi_689058354.webp';
+
 const AboutMe = () => {
+  const { theme } = useTheme();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0, scale: 0.95 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 12
+      }
+    }
+  };
+
   return (
-    <div className="about-me-app">
-      <div className="about-header">
-        <motion.div 
-          className="profile-section"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="avatar-circle">
-            <span className="initials">AI</span>
-          </div>
-          <h1 className="name">Aniket Ikhar</h1>
-          <div className="role-badges">
-            <span className="badge">Full Stack Developer</span>
-            <span className="badge">MERN Stack</span>
+    <div className={`about-me-app-v2 ${theme}`}>
+      <motion.div 
+        className="about-container"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        
+        {/* Hero Card - Large with 3D Image */}
+        <motion.div className="card hero-card" variants={itemVariants}>
+          <div className="hero-content">
+            <div className="hero-image">
+              <img src={img1} alt="3D Character" />
+            </div>
+            <div className="hero-text">
+              <h1>Creative Developer</h1>
+              <p>Building beautiful digital experiences</p>
+              <div className="hero-badge">
+                <FaRocket /> Available for projects
+              </div>
+            </div>
           </div>
         </motion.div>
-      </div>
 
-      <div className="about-content">
-        <motion.section 
-          className="info-card"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <div className="card-header">
-            <FaGraduationCap className="icon" />
-            <h2>Education</h2>
+        {/* Profile Greeting */}
+        <motion.div className="card profile-card" variants={itemVariants}>
+          <div className="profile-avatar">
+            <div className="avatar-ring">
+              <span className="avatar-initials">AI</span>
+            </div>
           </div>
-          <div className="card-body">
-            <p><strong>Master of Computer Applications (MCA)</strong></p>
-            <p>G H Raisoni Institute of Engineering and Technology, Nagpur</p>
-            <p className="subtext">Recently Completed</p>
+          <h2 className="greeting">Hello, I'm Aniket</h2>
+          <p className="tagline">Full Stack Developer & UI/UX Enthusiast</p>
+          <div className="quick-info">
+            <div className="info-item">
+              <FaMapMarkerAlt />
+              <span>Nagpur, India</span>
+            </div>
           </div>
-        </motion.section>
+        </motion.div>
 
-        <motion.section 
-          className="info-card"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="card-header">
-            <FaLaptopCode className="icon" />
-            <h2>About Me</h2>
+        {/* Stats Cards Row */}
+        <motion.div className="card stat-card yellow" variants={itemVariants}>
+          <div className="stat-icon"><FaTrophy /></div>
+          <div className="stat-content">
+            <h3>20+</h3>
+            <p>Projects</p>
           </div>
-          <div className="card-body">
-            <p>
-              During my fourth semester, I undertook a full stack developer internship, 
-              which significantly enhanced my skills in ReactJS, Node.js, MongoDB, and Express.js.
-            </p>
-            <p>
-              I have successfully created several projects including a recipe web application, 
-              a crypto tracker, an ecommerce web application, and a URL shortener.
-            </p>
-            <p>
-              I am known for being consistent and focused on my work, ensuring high-quality 
-              results. Additionally, I am a good team player, consistently contributing to 
-              collaborative projects.
-            </p>
-          </div>
-        </motion.section>
+        </motion.div>
 
-        <motion.section 
-          className="info-card"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <div className="card-header">
-            <FaCertificate className="icon" />
-            <h2>Certifications</h2>
+        <motion.div className="card stat-card blue" variants={itemVariants}>
+          <div className="stat-icon"><FaBriefcase /></div>
+          <div className="stat-content">
+            <h3>3+</h3>
+            <p>Years Exp</p>
           </div>
-          <div className="card-body">
-            <ul className="cert-list">
-              <li>
-                <div className="cert-badge">🐍</div>
-                <div>
-                  <strong>Python Certification</strong>
-                  <p className="subtext">Google</p>
-                </div>
-              </li>
-              <li>
-                <div className="cert-badge">⭐</div>
-                <div>
-                  <strong>5-Star Gold Badge in C++</strong>
-                  <p className="subtext">HackerRank</p>
-                </div>
-              </li>
-              <li>
-                <div className="cert-badge">🧩</div>
-                <div>
-                  <strong>Problem Solving</strong>
-                  <p className="subtext">HackerRank</p>
-                </div>
-              </li>
-            </ul>
+        </motion.div>
+
+        {/* My Skills - Collection Style */}
+        <motion.div className="skills-section" variants={itemVariants}>
+          <h2 className="section-title">
+            <FaStar className="title-icon" />
+            My Skills
+          </h2>
+          <div className="skills-grid">
+            <SkillCard icon={<FaReact />} name="React" color="#61DAFB" image={img2} />
+            <SkillCard icon={<SiNextdotjs />} name="Next.js" color="#000000" image={img3} />
+            <SkillCard icon={<FaNodeJs />} name="Node.js" color="#339933" image={img4} />
+            <SkillCard icon={<SiMongodb />} name="MongoDB" color="#47A248" image={img5} />
+            <SkillCard icon={<SiTypescript />} name="TypeScript" color="#3178C6" image={img6} />
+            <SkillCard icon={<SiCplusplus />} name="C++" color="#00599C" image={img2} />
           </div>
-        </motion.section>
-      </div>
+        </motion.div>
+
+        {/* Education Card */}
+        <motion.div className="card education-card purple" variants={itemVariants}>
+          <div className="card-icon">
+            <FaGraduationCap />
+          </div>
+          <div className="card-content">
+            <h3>MCA Graduate</h3>
+            <p>G H Raisoni Institute</p>
+            <span className="year">2024</span>
+          </div>
+        </motion.div>
+
+        {/* Download Resume */}
+        <motion.div className="card resume-card pink" variants={itemVariants}>
+          <div className="card-icon">
+            <FaDownload />
+          </div>
+          <div className="card-content">
+            <h3>Resume</h3>
+            <p>Download PDF</p>
+          </div>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div className="card social-card" variants={itemVariants}>
+          <h3 className="card-title">Connect With Me</h3>
+          <div className="social-grid">
+            <a href="https://github.com" className="social-btn github" target="_blank" rel="noopener noreferrer">
+              <FaGithub />
+            </a>
+            <a href="https://linkedin.com" className="social-btn linkedin" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin />
+            </a>
+            <a href="https://twitter.com" className="social-btn twitter" target="_blank" rel="noopener noreferrer">
+              <FaTwitter />
+            </a>
+            <a href="mailto:contact@aniket.dev" className="social-btn email">
+              <FaEnvelope />
+            </a>
+          </div>
+        </motion.div>
+
+      </motion.div>
     </div>
   );
 };
+
+const SkillCard = ({ icon, name, color, image }) => (
+  <motion.div 
+    className="skill-card"
+    whileHover={{ scale: 1.05, y: -5 }}
+    transition={{ type: "spring", stiffness: 300 }}
+  >
+    <div className="skill-image">
+      <img src={image} alt={name} />
+    </div>
+    <div className="skill-overlay">
+      <div className="skill-icon" style={{ color }}>
+        {icon}
+      </div>
+      <span className="skill-name">{name}</span>
+    </div>
+  </motion.div>
+);
 
 export default AboutMe;

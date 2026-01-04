@@ -1,3 +1,4 @@
+/* Default Dark Theme (Glass) */
 .window-frame {
   position: absolute;
   top: 100px;
@@ -10,8 +11,18 @@
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
   overflow: hidden;
   background-color: rgba(30, 30, 30, 0.85); /* Dark theme base */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Light Theme Overrides */
+.window-frame.light {
+  background-color: rgba(255, 248, 231, 0.95); /* Creamy/White opaque */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle dark border */
+  box-shadow: 0 20px 50px rgba(100, 100, 100, 0.2);
+}
 
 .window-frame.maximized {
   border-radius: 0 !important;
@@ -22,6 +33,7 @@
   width: 100vw !important;
   height: calc(100vh - 28px) !important;
   box-shadow: none !important;
+  border: none !important;
 }
 
 @media (max-width: 768px) {
@@ -30,9 +42,6 @@
     height: calc(100vh - 44px) !important;
   }
 }
-
-
-/* Mobile responsive override logic will go in global or here via media queries */
 
 .window-header {
   height: 38px;
@@ -44,6 +53,12 @@
   cursor: grab;
   position: relative;
   z-index: 1;
+}
+
+/* Light Theme Header */
+.window-frame.light .window-header {
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .window-header:active {
@@ -95,15 +110,19 @@
   font-size: 13px;
   font-weight: 600;
   color: rgba(255,255,255,0.7);
-  /* Compensate for traffic lights to center perfectly */
   padding-right: 50px; 
+}
+
+/* Light Theme Title */
+.window-frame.light .window-title {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .window-body {
   flex: 1;
   overflow-y: auto;
   position: relative;
-  background: rgba(30, 30, 30, 0.6); /* Slightly lighter inner content */
+  background: transparent; /* Allow wrapper background to show through or component background */
 }
 
 /* Custom Scrollbar for inner content */
@@ -116,4 +135,9 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
+}
+
+/* Light Theme Scrollbar */
+.window-frame.light .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
 }

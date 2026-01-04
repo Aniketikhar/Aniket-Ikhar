@@ -2,10 +2,12 @@ import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoClose, IoRemove, IoExpand } from 'react-icons/io5';
 import { useWindowManager } from '../../context/WindowManagerContext';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/WindowFrame.css';
 
 const WindowFrame = ({ windowId, title, children }) => {
   const { windows, closeWindow, minimizeWindow, maximizeWindow, focusWindow } = useWindowManager();
+  const { theme } = useTheme();
   const winState = windows[windowId];
 
   // If closed, don't render (AnimatePresence handles the exit anim)
@@ -33,7 +35,7 @@ const WindowFrame = ({ windowId, title, children }) => {
     <AnimatePresence>
       {!winState.isMin && (
         <motion.div
-           className={`window-frame glass ${winState.zIndex > 10 ? 'active' : ''} ${isMaximized ? 'maximized' : ''}`}
+           className={`window-frame glass ${theme} ${winState.zIndex > 10 ? 'active' : ''} ${isMaximized ? 'maximized' : ''}`}
            drag={!isMaximized}
            dragConstraints={{
              top: 0,

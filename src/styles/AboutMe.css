@@ -1,153 +1,497 @@
-.about-me-app {
-  padding: 24px;
+/* ===========================================
+   ABOUT ME V2 - TOY GALLERY INSPIRED
+   =========================================== */
+
+.about-me-app-v2 {
   height: 100%;
+  width: 100%;
   overflow-y: auto;
-  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+  padding: 2rem;
+  scrollbar-width: none;
 }
 
-.about-header {
+.about-me-app-v2::-webkit-scrollbar {
+  display: none;
+}
+
+/* Theme Backgrounds */
+.about-me-app-v2.dark {
+  background: transparent;
+}
+
+.about-me-app-v2.light {
+  background: #FFF8E7;
+}
+
+/* Container Grid */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+/* Base Card Styles */
+.card {
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.about-me-app-v2.dark .card {
+  background: rgba(40, 40, 40, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-me-app-v2.light .card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* ================== HERO CARD ================== */
+.hero-card {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #81ECEC 0%, #6DBDBD 100%) !important;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  border: none !important;
+}
+
+.about-me-app-v2.dark .hero-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
   text-align: center;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
 }
 
-.profile-section {
-  display: inline-block;
+.hero-image {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
 }
 
-.avatar-circle {
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  font-weight: 900;
+  color: #2d3436;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.about-me-app-v2.dark .hero-text h1 {
+  color: #ffffff;
+}
+
+.hero-text p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 8px 0 16px;
+}
+
+.about-me-app-v2.dark .hero-text p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  font-weight: 600;
+  color: #2d3436;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-me-app-v2.dark .hero-badge {
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+/* ================== PROFILE CARD ================== */
+.profile-card {
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.profile-avatar {
+  margin-bottom: 20px;
+}
+
+.avatar-ring {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+  padding: 4px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
-  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
 }
 
-.initials {
-  font-size: 36px;
-  font-weight: 700;
+.avatar-initials {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #2d3436;
   color: white;
-}
-
-.name {
-  font-size: 28px;
-  font-weight: 700;
-  color: white;
-  margin: 12px 0;
-}
-
-.role-badges {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.badge {
-  background: rgba(102, 126, 234, 0.2);
-  border: 1px solid rgba(102, 126, 234, 0.4);
-  color: #a8b5ff;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.info-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.3s ease;
-}
-
-.info-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(102, 126, 234, 0.3);
-  transform: translateY(-2px);
-}
-
-.card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.about-me-app-v2.light .avatar-initials {
+  background: #ffffff;
+  color: #2d3436;
+}
+
+.greeting {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.about-me-app-v2.light .greeting {
+  color: #2d3436;
+}
+
+.tagline {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 16px;
 }
 
-.card-header .icon {
-  font-size: 20px;
-  color: #667eea;
+.about-me-app-v2.light .tagline {
+  color: rgba(0, 0, 0, 0.6);
 }
 
-.card-header h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-  margin: 0;
+.quick-info {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-.card-body {
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
 }
 
-.card-body p {
-  margin-bottom: 12px;
-  font-size: 14px;
+.about-me-app-v2.light .info-item {
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.card-body p:last-child {
-  margin-bottom: 0;
-}
-
-.subtext {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 13px !important;
-}
-
-.cert-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.cert-list li {
+/* ================== STAT CARDS ================== */
+.stat-card {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 28px;
+  color: #2d3436;
+  border: none !important;
 }
 
-.cert-list li:last-child {
-  border-bottom: none;
+.stat-card.yellow {
+  background: linear-gradient(135deg, #FDCB6E, #F39C12) !important;
 }
 
-.cert-badge {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: rgba(102, 126, 234, 0.1);
+.stat-card.blue {
+  background: linear-gradient(135deg, #74B9FF, #0984E3) !important;
+}
+
+.stat-card.pink {
+  background: linear-gradient(135deg, #FD79A8, #E84393) !important;
+}
+
+.stat-card.purple {
+  background: linear-gradient(135deg, #A29BFE, #6C5CE7) !important;
+}
+
+.stat-icon {
+  font-size: 36px;
+  opacity: 0.9;
+}
+
+.stat-content h3 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-content p {
+  font-size: 14px;
+  margin: 4px 0 0;
+  opacity: 0.8;
+}
+
+/* ================== SKILLS SECTION ================== */
+.skills-section {
+  grid-column: span 2;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.about-me-app-v2.light .section-title {
+  color: #2d3436;
+}
+
+.title-icon {
+  color: #FFD700;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  aspect-ratio: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.skill-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.skill-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skill-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+.skill-icon {
+  font-size: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.skill-name {
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ================== EDUCATION CARD ================== */
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #ffffff;
+  border: none !important;
+}
+
+.card-icon {
+  font-size: 40px;
+  opacity: 0.9;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.card-content p {
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.year {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ================== RESUME CARD ================== */
+.resume-card {
+  cursor: pointer;
+  color: #ffffff;
+  border: none !important;
+}
+
+.resume-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* ================== SOCIAL CARD ================== */
+.social-card {
+  grid-column: span 2;
+  padding: 28px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: #ffffff;
+}
+
+.about-me-app-v2.light .card-title {
+  color: #2d3436;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.social-btn {
+  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
+  border-radius: 20px;
+  font-size: 28px;
+  text-decoration: none;
+  transition: all 0.3s;
+  color: white;
 }
 
-.cert-list strong {
-  color: white;
-  font-size: 14px;
-  display: block;
+.social-btn.github {
+  background: linear-gradient(135deg, #6e5494, #4c3874);
+}
+
+.social-btn.linkedin {
+  background: linear-gradient(135deg, #0077b5, #005582);
+}
+
+.social-btn.twitter {
+  background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+}
+
+.social-btn.email {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.social-btn:hover {
+  transform: translateY(-4px) rotate(5deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card,
+  .skills-section,
+  .social-card {
+    grid-column: span 1;
+  }
+
+  .hero-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .about-me-app-v2 {
+    padding: 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
