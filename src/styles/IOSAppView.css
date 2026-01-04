@@ -1,0 +1,110 @@
+.ios-app-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ios-nav-bar {
+  height: 44px;
+  background: rgba(28, 28, 30, 0.95);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(84, 84, 88, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: relative;
+  margin-top: 44px; /* Status bar height */
+  flex-shrink: 0;
+}
+
+.ios-back-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #007AFF;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 8px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ios-back-button:active {
+  opacity: 0.5;
+}
+
+.ios-nav-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  letter-spacing: -0.4px;
+}
+
+.ios-close-button {
+  background: none;
+  border: none;
+  color: #007AFF;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ios-close-button:active {
+  opacity: 0.5;
+}
+
+.ios-app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #000000;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.ios-app-content::-webkit-scrollbar {
+  display: none;
+}
+
+.ios-home-indicator-bottom {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 134px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  z-index: 2;
+}
+
+/* Safe area support */
+@supports (padding: env(safe-area-inset-top)) {
+  .ios-nav-bar {
+    margin-top: env(safe-area-inset-top);
+  }
+  
+  .ios-home-indicator-bottom {
+    bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+}

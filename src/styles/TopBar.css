@@ -1,0 +1,56 @@
+.top-bar {
+  width: 100%;
+  height: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 13px;
+  background: rgba(0, 0, 0, 0.2); /* Darker glass for top bar */
+  backdrop-filter: blur(10px);
+  color: white;
+  z-index: 9999;
+  position: relative;
+}
+
+.left-side, .right-side {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 20px;
+  width: auto;
+  margin-right: 4px;
+  object-fit: contain;
+}
+
+.app-name {
+  font-weight: 700;
+}
+
+.menu-item {
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.menu-item:hover {
+  opacity: 1;
+}
+
+.right-side .status-icon {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.date-time {
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .menu-item {
+    display: none;
+  }
+}

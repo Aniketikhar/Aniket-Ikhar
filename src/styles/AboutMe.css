@@ -1,0 +1,153 @@
+.about-me-app {
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-section {
+  display: inline-block;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.initials {
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin: 12px 0;
+}
+
+.role-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(102, 126, 234, 0.4);
+  color: #a8b5ff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card-header .icon {
+  font-size: 20px;
+  color: #667eea;
+}
+
+.card-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.card-body {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.card-body p {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.subtext {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px !important;
+}
+
+.cert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cert-list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cert-list li:last-child {
+  border-bottom: none;
+}
+
+.cert-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(102, 126, 234, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.cert-list strong {
+  color: white;
+  font-size: 14px;
+  display: block;
+}

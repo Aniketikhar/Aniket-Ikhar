@@ -1,0 +1,66 @@
+/* iOS Global Styles */
+
+.ios-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000000;
+  position: relative;
+}
+
+/* Disable text selection on iOS for app-like feel */
+.ios-container * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Allow text selection in content areas */
+.ios-app-content * {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* iOS smooth scrolling */
+.ios-app-content {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Remove tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS color scheme */
+:root {
+  --ios-bg: #000000;
+  --ios-secondary-bg: #1c1c1e;
+  --ios-tertiary-bg: #2c2c2e;
+  --ios-accent: #007AFF;
+  --ios-text: #ffffff;
+  --ios-secondary-text: rgba(235, 235, 245, 0.6);
+  --ios-separator: rgba(84, 84, 88, 0.6);
+  --ios-border-radius-small: 10px;
+  --ios-border-radius-medium: 12px;
+  --ios-border-radius-large: 20px;
+}
+
+/* iOS Button Active State */
+button:active {
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+
+/* Prevent zoom on iOS */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 16px !important;
+  }
+}

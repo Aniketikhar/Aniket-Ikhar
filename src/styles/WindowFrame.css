@@ -1,0 +1,110 @@
+.window-frame {
+  position: absolute;
+  top: 100px;
+  left: 200px; /* Initial position, simplified */
+  width: 800px;
+  height: 500px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  overflow: hidden;
+  background-color: rgba(30, 30, 30, 0.85); /* Dark theme base */
+}
+
+.window-frame.maximized {
+  border-radius: 0 !important;
+  z-index: 99999 !important; /* Above everything including top bar */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  box-shadow: none !important;
+}
+
+/* Mobile responsive override logic will go in global or here via media queries */
+
+.window-header {
+  height: 38px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  cursor: grab;
+  position: relative;
+  z-index: 1;
+}
+
+.window-header:active {
+  cursor: grabbing;
+}
+
+.traffic-lights {
+  display: flex;
+  gap: 8px;
+  margin-right: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.light:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.light .icon {
+  opacity: 0;
+  color: rgba(0,0,0,0.5);
+  transition: opacity 0.1s;
+}
+
+.traffic-lights:hover .icon {
+  opacity: 1;
+}
+
+.light.red { background-color: #FF5F56; }
+.light.yellow { background-color: #FFBD2E; }
+.light.green { background-color: #27C93F; }
+
+.window-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  /* Compensate for traffic lights to center perfectly */
+  padding-right: 50px; 
+}
+
+.window-body {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  background: rgba(30, 30, 30, 0.6); /* Slightly lighter inner content */
+}
+
+/* Custom Scrollbar for inner content */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
