@@ -42,9 +42,9 @@ const IOSAppView = ({ app, children, onClose }) => {
           <span>Home</span>
         </button>
         <h1 className="ios-nav-title">{app?.name || 'App'}</h1>
-        <button className="ios-close-button" onClick={handleClose}>
+        {/* <button className="ios-close-button" onClick={handleClose}>
           <IoClose size={28} />
-        </button>
+        </button> */}
       </div>
 
       {/* App Content */}

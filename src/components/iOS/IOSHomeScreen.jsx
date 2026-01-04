@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFolder, FaBriefcase, FaGraduationCap, FaCog, FaEnvelope, FaLaptopCode } from 'react-icons/fa';
+import { FaFolder, FaBriefcase, FaGraduationCap, FaCog, FaEnvelope, FaLaptopCode, FaImages } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
 import '../../styles/IOSHomeScreen.css';
 
@@ -16,6 +16,12 @@ const apps = [
     name: 'Projects', 
     icon: FaLaptopCode,
     gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+  },
+  { 
+    id: 'gallery', 
+    name: 'Gallery', 
+    icon: FaImages,
+    gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)'
   },
   { 
     id: 'experience', 

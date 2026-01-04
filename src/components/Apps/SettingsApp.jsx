@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaPalette, FaImage, FaMoon, FaSun } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaPalette, FaImage, FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
 import '../../styles/Settings.css';
 import defaultWallpaper from '../../assets/wallpaper.png';
@@ -51,23 +51,56 @@ const wallpaperCategories = [
 const SettingsApp = () => {
   const { theme, setTheme, wallpaper, changeWallpaper } = useTheme();
   const [activeTab, setActiveTab] = useState('appearance');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setIsMobileMenuOpen(false); // Close menu on mobile after selecting a tab
+  };
 
   return (
     <div className="settings-app">
-      <div className="settings-sidebar">
+      {/* Mobile Menu Button */}
+      <button 
+        className="mobile-menu-button"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Overlay for mobile */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Sidebar */}
+      <div 
+        className={`settings-sidebar ${isMobileMenuOpen ? 'open' : ''}`}
+      >
         <button 
           className={`settings-tab ${activeTab === 'appearance' ? 'active' : ''}`}
-          onClick={() => setActiveTab('appearance')}
+          onClick={() => handleTabClick('appearance')}
         >
           <FaPalette /> Appearance
         </button>
         <button 
           className={`settings-tab ${activeTab === 'wallpaper' ? 'active' : ''}`}
-          onClick={() => setActiveTab('wallpaper')}
+          onClick={() => handleTabClick('wallpaper')}
         >
           <FaImage /> Wallpaper
         </button>
       </div>
+
 
       <div className="settings-content">
         {activeTab === 'appearance' && (

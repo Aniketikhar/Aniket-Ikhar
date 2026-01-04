@@ -14,6 +14,21 @@ const WindowFrame = ({ windowId, title, children }) => {
   // Determine animation values based on maximize state
   const isMaximized = winState.isMaximized;
 
+  // Mobile detection
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate top offset and height based on device
+  const topOffset = isMobile ? 44 : 28;
+  const heightCalc = `calc(100vh - ${topOffset}px)`;
+
   return (
     <AnimatePresence>
       {!winState.isMin && (
@@ -43,10 +58,10 @@ const WindowFrame = ({ windowId, title, children }) => {
              opacity: 1, 
              x: isMaximized ? 0 : undefined,
              y: isMaximized ? 0 : undefined,
-             top: isMaximized ? 0 : undefined,
+             top: isMaximized ? topOffset : undefined,
              left: isMaximized ? 0 : undefined,
              width: isMaximized ? '100vw' : undefined,
-             height: isMaximized ? '100vh' : undefined,
+             height: isMaximized ? heightCalc : undefined,
              borderRadius: isMaximized ? 0 : undefined
            }}
            transition={

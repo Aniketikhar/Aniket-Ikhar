@@ -12,16 +12,25 @@
   background-color: rgba(30, 30, 30, 0.85); /* Dark theme base */
 }
 
+
 .window-frame.maximized {
   border-radius: 0 !important;
   z-index: 99999 !important; /* Above everything including top bar */
   position: fixed !important;
-  top: 0 !important;
+  top: 28px !important; /* TopBar height */
   left: 0 !important;
   width: 100vw !important;
-  height: 100vh !important;
+  height: calc(100vh - 28px) !important;
   box-shadow: none !important;
 }
+
+@media (max-width: 768px) {
+  .window-frame.maximized {
+    top: 44px !important; /* IOSStatusBar height */
+    height: calc(100vh - 44px) !important;
+  }
+}
+
 
 /* Mobile responsive override logic will go in global or here via media queries */
 

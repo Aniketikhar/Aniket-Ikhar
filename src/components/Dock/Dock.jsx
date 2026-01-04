@@ -9,11 +9,14 @@ import aboutIcon from '../../assets/about.png';
 import projectsIcon from '../../assets/projects.png';
 import settingsIcon from '../../assets/settings.png';
 import terminalIcon from '../../assets/terminal.png';
+// Using wallpaper as gallery icon temporary
+import photosIcon from '../../assets/wallpaper.png'; 
 
 const apps = [
   { id: 'finder', name: 'Finder', icon: finderIcon },
   { id: 'about', name: 'About', icon: aboutIcon },
   { id: 'projects', name: 'Projects', icon: projectsIcon },
+  { id: 'gallery', name: 'Gallery', icon: photosIcon },
   { id: 'contact', name: 'Settings', icon: settingsIcon },
   { id: 'terminal', name: 'Terminal', icon: terminalIcon },
 ];
