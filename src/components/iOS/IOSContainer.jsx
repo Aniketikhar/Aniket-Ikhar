@@ -6,6 +6,7 @@ import IOSAppView from './IOSAppView';
 import AboutMe from '../Apps/AboutMe';
 import ProjectsApp from '../Apps/ProjectsApp';
 import GalleryApp from '../Apps/GalleryApp';
+import SafariApp from '../Apps/SafariApp';
 import SettingsApp from '../Apps/SettingsApp';
 import '../../styles/iOS.css';
 
@@ -30,6 +31,8 @@ const IOSContainer = () => {
         return <ProjectsApp />;
       case 'gallery':
         return <GalleryApp />;
+      case 'safari':
+        return <SafariApp />;
       case 'contact':
         return <SettingsApp />;
       default:

@@ -10,6 +10,7 @@ export const WindowManagerProvider = ({ children }) => {
     finder: { id: 'finder', title: 'Finder', component: 'AboutMe', isOpen: true, isMin: false, isMaximized: false, zIndex: 1 },
     projects: { id: 'projects', title: 'Projects', component: 'Projects', isOpen: true, isMin: false, isMaximized: false, zIndex: 2 },
     gallery: { id: 'gallery', title: 'Gallery', component: 'Gallery', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
+    safari: { id: 'safari', title: 'Safari', component: 'Safari', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
     contact: { id: 'contact', title: 'Settings', component: 'Settings', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
   });
 

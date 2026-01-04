@@ -1,0 +1,249 @@
+.safari-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f5f5f7;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Dark mode support logic could be added here via context or global class */
+
+.safari-toolbar {
+  height: 50px;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 12px;
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
+}
+
+.safari-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-btn:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+.safari-address-bar {
+  flex: 1;
+  height: 32px;
+  background: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lock-icon {
+  color: #555;
+  margin-right: 8px;
+  opacity: 0.6;
+}
+
+.safari-address-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+  color: #333;
+}
+
+.safari-content {
+  flex: 1;
+  position: relative;
+  background: white;
+  overflow: hidden;
+}
+
+.iframe-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: relative;
+  z-index: 2;
+}
+
+.iframe-overlay-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #999;
+  text-align: center;
+  width: 80%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.safari-loader-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: #007AFF;
+  width: 100%;
+  animation: load 2s infinite;
+  z-index: 10;
+}
+
+@keyframes load {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+/* Simulated Google Page */
+.google-start-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.google-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.google-content h1 {
+  font-size: 80px;
+  font-weight: 500;
+  color: #4285f4; /* Simple single color for simplicity, or use span gradient */
+  letter-spacing: -4px;
+  margin: 0;
+}
+
+.google-search-form {
+  width: 500px;
+  max-width: 90vw;
+}
+
+.search-input-wrapper {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  transition: box-shadow 0.2s;
+}
+
+.search-input-wrapper:hover {
+  box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+}
+
+.search-icon {
+  color: #9aa0a6;
+  margin-right: 12px;
+}
+
+.search-input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.google-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.google-buttons button {
+  background: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  color: #3c4043;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.google-buttons button:hover {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-color: #dadce0;
+}
+
+/* Favorites Section */
+.favorites-grid {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.fav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.fav-item:hover .fav-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.fav-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f1f3f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #444;
+  transition: all 0.2s;
+}
+
+.fav-item span {
+  font-size: 13px;
+  color: #333;
+}
+
+.external-link-btn {
+  margin-left: 0;
+  opacity: 0.6;
+}
+
+.external-link-btn:hover {
+  opacity: 1;
+}
