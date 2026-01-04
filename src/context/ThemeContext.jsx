@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import defaultWallpaper from '../assets/wallpaper.png';
 
 const ThemeContext = createContext();
 
@@ -12,7 +13,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark'); // 'light' or 'dark'
-  const [wallpaper, setWallpaper] = useState('/src/assets/wallpaper.png');
+  const [wallpaper, setWallpaper] = useState(defaultWallpaper);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
