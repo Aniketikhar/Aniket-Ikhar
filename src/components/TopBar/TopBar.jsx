@@ -3,8 +3,6 @@ import { FaWifi, FaBatteryFull, FaSearch } from 'react-icons/fa';
 import { IoIosSettings } from "react-icons/io";
 import { format } from 'date-fns';
 import { useTheme } from '../../context/ThemeContext';
-import logoLight from '../../assets/logo-light.png';
-import logoDark from '../../assets/logo-dark.png';
 import '../../styles/TopBar.css';
 
 const TopBar = () => {

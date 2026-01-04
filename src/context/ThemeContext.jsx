@@ -12,8 +12,24 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('dark'); // 'light' or 'dark'
-  const [wallpaper, setWallpaper] = useState(defaultWallpaper);
+  // Initialize from localStorage or default
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('app-theme') || 'dark';
+  });
+  
+  const [wallpaper, setWallpaper] = useState(() => {
+    return localStorage.getItem('app-wallpaper') || defaultWallpaper;
+  });
+
+  // Persist theme changes
+  React.useEffect(() => {
+    localStorage.setItem('app-theme', theme);
+  }, [theme]);
+
+  // Persist wallpaper changes
+  React.useEffect(() => {
+    localStorage.setItem('app-wallpaper', wallpaper);
+  }, [wallpaper]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
