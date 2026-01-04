@@ -205,78 +205,51 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Mobile Menu Button */
-.mobile-menu-button {
-  display: none;
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 100002;
-  background: rgba(102, 126, 234, 0.9);
-  border: none;
-  color: white;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.mobile-menu-button:hover {
-  background: rgba(102, 126, 234, 1);
-  transform: scale(1.05);
-}
-
-.mobile-menu-button:active {
-  transform: scale(0.95);
-}
-
-/* Mobile Overlay */
-.mobile-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 99999;
-  backdrop-filter: blur(4px);
-}
-
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .mobile-menu-button {
-    display: flex;
+  .settings-app {
+    flex-direction: column;
   }
 
-  .mobile-overlay {
-    display: block;
-  }
-
+  /* Transform sidebar into horizontal scrollable nav */
   .settings-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 100000;
-    transform: translateX(-100%) !important;
-    transition: transform 0.3s ease;
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    background: rgba(30, 30, 30, 0.8);
   }
 
-  .settings-sidebar.open {
-    transform: translateX(0) !important;
+  .settings-sidebar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for cleaner look */
+  }
+
+  .settings-tab {
+    width: auto;
+    white-space: nowrap;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .settings-tab.active {
+    background: #667eea;
+    color: white;
+    border-left: none; /* Remove desktop active border */
   }
 
   .settings-content {
-    padding: 80px 16px 16px 16px;
-    margin-left: 0;
+    padding: 20px;
+    flex: 1;
   }
 
   .settings-section h2 {
@@ -305,7 +278,7 @@
 /* Extra small devices */
 @media (max-width: 480px) {
   .settings-content {
-    padding: 70px 12px 12px 12px;
+    padding: 16px;
   }
 
   .settings-section h2 {
