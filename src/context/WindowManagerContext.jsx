@@ -12,6 +12,7 @@ export const WindowManagerProvider = ({ children }) => {
     gallery: { id: 'gallery', title: 'Gallery', component: 'Gallery', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
     safari: { id: 'safari', title: 'Safari', component: 'Safari', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
     contact: { id: 'contact', title: 'Settings', component: 'Settings', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
+    experience: { id: 'experience', title: 'Terminal', component: 'Experience', isOpen: false, isMin: false, isMaximized: false, zIndex: 0 },
   });
 
   const [activeWindowId, setActiveWindowId] = useState('finder');

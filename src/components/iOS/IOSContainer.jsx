@@ -8,6 +8,7 @@ import ProjectsApp from '../Apps/ProjectsApp';
 import GalleryApp from '../Apps/GalleryApp';
 import SafariApp from '../Apps/SafariApp';
 import SettingsApp from '../Apps/SettingsApp';
+import ExperienceApp from '../Apps/ExperienceApp';
 import '../../styles/iOS.css';
 
 const IOSContainer = () => {
@@ -35,6 +36,8 @@ const IOSContainer = () => {
         return <SafariApp />;
       case 'contact':
         return <SettingsApp />;
+      case 'experience':
+        return <ExperienceApp />;
       default:
         return (
           <div style={{ 

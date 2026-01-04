@@ -7,6 +7,7 @@ import ProjectsApp from '../Apps/ProjectsApp';
 import SettingsApp from '../Apps/SettingsApp';
 import GalleryApp from '../Apps/GalleryApp';
 import SafariApp from '../Apps/SafariApp';
+import ExperienceApp from '../Apps/ExperienceApp';
 import { WindowManagerProvider, useWindowManager } from '../../context/WindowManagerContext';
 
 import { useTheme } from '../../context/ThemeContext';
@@ -29,6 +30,7 @@ const DesktopContent = () => {
             {win.id === 'gallery' && <GalleryApp />}
             {win.id === 'safari' && <SafariApp />}
             {win.id === 'contact' && <SettingsApp />}
+            {win.id === 'experience' && <ExperienceApp />}
           </WindowFrame>
         ))}
       </div>

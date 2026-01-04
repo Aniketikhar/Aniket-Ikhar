@@ -19,7 +19,7 @@ const apps = [
   { id: 'gallery', name: 'Gallery', icon: photosIcon },
   { id: 'safari', name: 'Safari', icon: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Safari_browser_logo.svg' },
   { id: 'contact', name: 'Settings', icon: settingsIcon },
-  { id: 'terminal', name: 'Terminal', icon: terminalIcon },
+  { id: 'experience', name: 'Experience', icon: terminalIcon },
 ];
 
 const Dock = () => {
