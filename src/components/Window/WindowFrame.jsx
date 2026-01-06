@@ -38,10 +38,10 @@ const WindowFrame = ({ windowId, title, children }) => {
            className={`window-frame glass ${theme} ${winState.zIndex > 10 ? 'active' : ''} ${isMaximized ? 'maximized' : ''}`}
            drag={!isMaximized}
            dragConstraints={{
-             top: 0,
-             left: -400,
-             right: 400,
-             bottom: window.innerHeight - 500
+             top: -100,
+             left: -200,
+             right: 500,
+             bottom: window.innerHeight - 300
            }}
            dragElastic={0.1}
            dragTransition={{ 
