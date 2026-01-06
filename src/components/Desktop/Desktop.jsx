@@ -2,6 +2,7 @@ import React from 'react';
 import TopBar from '../TopBar/TopBar';
 import Dock from '../Dock/Dock';
 import WindowFrame from '../Window/WindowFrame';
+import ContextMenu from '../ContextMenu/ContextMenu';
 import AboutMe from '../Apps/AboutMe';
 import ProjectsApp from '../Apps/ProjectsApp';
 import SettingsApp from '../Apps/SettingsApp';
@@ -35,6 +36,7 @@ const DesktopContent = () => {
         ))}
       </div>
       <Dock />
+      <ContextMenu />
     </div>
   );
 };

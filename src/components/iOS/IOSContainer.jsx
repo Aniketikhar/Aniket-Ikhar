@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import IOSStatusBar from './IOSStatusBar';
 import IOSHomeScreen from './IOSHomeScreen';
 import IOSAppView from './IOSAppView';
+import ContextMenu from '../ContextMenu/ContextMenu';
 import AboutMe from '../Apps/AboutMe';
 import ProjectsApp from '../Apps/ProjectsApp';
 import GalleryApp from '../Apps/GalleryApp';
@@ -69,6 +70,8 @@ const IOSContainer = () => {
           </IOSAppView>
         )}
       </AnimatePresence>
+      
+      <ContextMenu />
     </div>
   );
 };
