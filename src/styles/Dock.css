@@ -1,10 +1,10 @@
 .dock-container {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .dock {
@@ -17,6 +17,8 @@
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  height: 90px; /* Fixed height matching base icon size (50px + padding + indicator) */
+  overflow: visible; /* Allow icons to move outside */
 }
 
 .dock-icon-wrapper {
@@ -39,7 +41,7 @@
   box-shadow: 
     0 4px 12px rgba(0,0,0,0.4),
     0 1px 2px rgba(0,0,0,0.3);
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .dock-icon:hover {
@@ -83,4 +85,42 @@
   box-shadow: 
     0 0 4px rgba(0, 0, 0, 0.3),
     0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* macOS-style tooltip */
+.dock-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 10%;
+  transform: translateX(-50%);
+  margin-bottom: 12px;
+  padding: 3px 6px;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(10px) saturate(180%);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
+/* Dark theme tooltip */
+.dark .dock-tooltip {
+  background: rgba(50, 50, 50, 0.95);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Light theme tooltip */
+.light .dock-tooltip {
+  background: rgba(250, 250, 250, 0.95);
+  color: rgba(0, 0, 0, 0.85);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.1);
 }

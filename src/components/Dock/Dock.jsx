@@ -38,6 +38,7 @@ const Dock = () => {
             key={app.id} 
             mouseX={mouseX} 
             icon={app.icon}
+            name={app.name}
             index={index}
             isOpen={windows[app.id]?.isOpen}
             onClick={() => openWindow(app.id)}
@@ -48,11 +49,14 @@ const Dock = () => {
   );
 };
 
-const DockIcon = ({ mouseX, icon, index, isOpen, onClick }) => {
+const DockIcon = ({ mouseX, icon, name, index, isOpen, onClick }) => {
   const ref = React.useRef(null);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   const distance = useTransform(mouseX, (val) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    // If mouse is not hovering (null), return a large distance to keep icon at base size
+    if (val === null) return 150;
     return val - bounds.x - bounds.width / 2;
   });
 
@@ -60,7 +64,11 @@ const DockIcon = ({ mouseX, icon, index, isOpen, onClick }) => {
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
 
   return (
-    <div className="dock-icon-wrapper">
+    <div 
+      className="dock-icon-wrapper"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <motion.div
         ref={ref}
         style={{ width }}
@@ -79,6 +87,21 @@ const DockIcon = ({ mouseX, icon, index, isOpen, onClick }) => {
           }} 
         />
       </motion.div>
+      
+      {/* Tooltip */}
+      {isHovered && (
+        <motion.div 
+          className="dock-tooltip"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+        >
+          {name}
+        </motion.div>
+      )}
+      
+      {/* Running indicator */}
       {isOpen && (
         <motion.div 
           className="dock-indicator"
