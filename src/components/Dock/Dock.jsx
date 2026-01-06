@@ -24,7 +24,7 @@ const apps = [
 
 const Dock = () => {
   const mouseX = useMotionValue(null);
-  const { openWindow } = useWindowManager();
+  const { openWindow, windows } = useWindowManager();
 
   return (
     <div className="dock-container">
@@ -39,6 +39,7 @@ const Dock = () => {
             mouseX={mouseX} 
             icon={app.icon}
             index={index}
+            isOpen={windows[app.id]?.isOpen}
             onClick={() => openWindow(app.id)}
           />
         ))}
@@ -47,7 +48,7 @@ const Dock = () => {
   );
 };
 
-const DockIcon = ({ mouseX, icon, index, onClick }) => {
+const DockIcon = ({ mouseX, icon, index, isOpen, onClick }) => {
   const ref = React.useRef(null);
 
   const distance = useTransform(mouseX, (val) => {
@@ -59,24 +60,35 @@ const DockIcon = ({ mouseX, icon, index, onClick }) => {
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
 
   return (
-    <motion.div
-      ref={ref}
-      style={{ width }}
-      className="dock-icon"
-      onClick={onClick}
-    >
-      <img 
-        src={icon} 
-        alt="app icon" 
-        style={{ 
-          width: '100%', 
-          height: '100%', 
-          objectFit: 'cover',
-          position: 'relative',
-          zIndex: 1
-        }} 
-      />
-    </motion.div>
+    <div className="dock-icon-wrapper">
+      <motion.div
+        ref={ref}
+        style={{ width }}
+        className={`dock-icon ${isOpen ? 'is-open' : ''}`}
+        onClick={onClick}
+      >
+        <img 
+          src={icon} 
+          alt="app icon" 
+          style={{ 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover',
+            position: 'relative',
+            zIndex: 1
+          }} 
+        />
+      </motion.div>
+      {isOpen && (
+        <motion.div 
+          className="dock-indicator"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        />
+      )}
+    </div>
   );
 };
 

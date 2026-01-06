@@ -9,10 +9,12 @@ import GalleryApp from '../Apps/GalleryApp';
 import SafariApp from '../Apps/SafariApp';
 import SettingsApp from '../Apps/SettingsApp';
 import ExperienceApp from '../Apps/ExperienceApp';
+import { useWindowManager } from '../../context/WindowManagerContext';
 import '../../styles/iOS.css';
 
 const IOSContainer = () => {
   const [activeApp, setActiveApp] = useState(null);
+  const { windows } = useWindowManager();
 
   const handleAppOpen = (app) => {
     setActiveApp(app);
@@ -57,7 +59,7 @@ const IOSContainer = () => {
       <IOSStatusBar />
       
       {!activeApp && (
-        <IOSHomeScreen onAppOpen={handleAppOpen} />
+        <IOSHomeScreen onAppOpen={handleAppOpen} windows={windows} />
       )}
 
       <AnimatePresence>

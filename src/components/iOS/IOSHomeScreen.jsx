@@ -55,7 +55,7 @@ const apps = [
   },
 ];
 
-const IOSHomeScreen = ({ onAppOpen }) => {
+const IOSHomeScreen = ({ onAppOpen, windows = {} }) => {
   const { wallpaper } = useTheme();
 
   const handleAppClick = (app) => {
@@ -74,7 +74,7 @@ const IOSHomeScreen = ({ onAppOpen }) => {
         {apps.map((app, index) => (
           <motion.div
             key={app.id}
-            className="ios-app-icon-container"
+            className={`ios-app-icon-container ${windows[app.id]?.isOpen ? 'is-open' : ''}`}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ 
@@ -94,6 +94,15 @@ const IOSHomeScreen = ({ onAppOpen }) => {
               <app.icon className="ios-app-icon-symbol" />
             </motion.div>
             <span className="ios-app-name">{app.name}</span>
+            {windows[app.id]?.isOpen && (
+              <motion.div 
+                className="ios-app-indicator"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              />
+            )}
           </motion.div>
         ))}
       </div>

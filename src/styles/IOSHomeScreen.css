@@ -38,6 +38,23 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+/* Running app indicator for iOS */
+.ios-app-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 0 6px rgba(255, 255, 255, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .ios-app-icon {
