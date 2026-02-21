@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/Experience.css';
 
 const experienceData = [
@@ -47,6 +48,7 @@ const experienceData = [
 const COMMANDS = ['help', 'experience', 'skills', 'contact', 'clear'];
 
 const ExperienceApp = () => {
+  const { theme } = useTheme();
   const [history, setHistory] = useState([
     { type: 'system', content: 'Initializing AniketOS Kernel v1.0.0...' },
     { type: 'system', content: 'Loading user experience modules...' },
@@ -68,8 +70,8 @@ const ExperienceApp = () => {
 
     switch (trimmed) {
       case 'help':
-        newHistory.push({ 
-          type: 'response', 
+        newHistory.push({
+          type: 'response',
           content: [
             'Available commands:',
             '  experience  - View professional timeline',
@@ -84,18 +86,18 @@ const ExperienceApp = () => {
         newHistory.push({ type: 'component', component: <ExperienceTimeline /> });
         break;
       case 'skills':
-        newHistory.push({ 
-          type: 'response', 
-          content: 'Fetching skills... [React, Node.js, Python, MongoDB, AWS]' 
+        newHistory.push({
+          type: 'response',
+          content: 'Fetching skills... [React, Node.js, Python, MongoDB, AWS]'
         });
         break;
       case 'clear':
         setHistory([]);
         return;
       case 'contact':
-        newHistory.push({ 
-          type: 'response', 
-          content: 'Email: contact@aniket.dev | LinkedIn: /in/aniket-ikhar' 
+        newHistory.push({
+          type: 'response',
+          content: 'Email: contact@aniket.dev | LinkedIn: /in/aniket-ikhar'
         });
         break;
       case '':
@@ -110,7 +112,7 @@ const ExperienceApp = () => {
   const handleInputChange = (e) => {
     const val = e.target.value;
     setInput(val);
-    
+
     if (val.trim()) {
       const matches = COMMANDS.filter(c => c.startsWith(val.toLowerCase()));
       setSuggestions(matches);
@@ -147,7 +149,7 @@ const ExperienceApp = () => {
   };
 
   return (
-    <div className="terminal-app" onClick={() => document.getElementById('term-input')?.focus()}>
+    <div className={`terminal-app ${theme}`} onClick={() => document.getElementById('term-input')?.focus()}>
       <div className="terminal-content">
         {history.map((line, i) => (
           <div key={i} className={`term-line ${line.type}`}>
@@ -161,11 +163,11 @@ const ExperienceApp = () => {
         {/* Interactive Experience Timeline Component */}
         <div className="current-line" style={{ position: 'relative' }}>
           <span className="prompt">guest@portfolio:~$</span>
-          <input 
+          <input
             id="term-input"
-            type="text" 
-            value={input} 
-            onChange={handleInputChange} 
+            type="text"
+            value={input}
+            onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             autoComplete="off"
             autoFocus
@@ -173,8 +175,8 @@ const ExperienceApp = () => {
           {suggestions.length > 0 && (
             <div className="input-suggestions">
               {suggestions.map((cmd, idx) => (
-                <div 
-                  key={cmd} 
+                <div
+                  key={cmd}
                   className={`suggestion-item ${idx === suggestionIndex ? 'active' : ''}`}
                   onClick={() => {
                     setInput(cmd);
@@ -205,8 +207,8 @@ const ExperienceTimeline = () => {
         <span>STATUS</span>
       </div>
       {experienceData.map((job) => (
-        <motion.div 
-          key={job.id} 
+        <motion.div
+          key={job.id}
           className="exp-row"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaRocket, FaCode, FaStar, FaCompass, FaMobileAlt, FaTools } from 'react-icons/fa';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/Projects.css';
 
 const categories = [
@@ -70,6 +71,7 @@ const projectsData = [
 ];
 
 const ProjectsApp = () => {
+  const { theme } = useTheme();
   const [activeCategory, setActiveCategory] = useState('discover');
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -97,7 +99,7 @@ const ProjectsApp = () => {
   );
 
   return (
-    <div className="projects-app app-store-theme">
+    <div className={`projects-app app-store-theme ${theme}`}>
       <div className="app-sidebar">
         <div className="sidebar-search">
           <input type="text" placeholder="Search" />

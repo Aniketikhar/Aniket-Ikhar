@@ -4,6 +4,60 @@
   background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
 }
 
+/* Light Theme */
+.light .settings-app {
+  background: linear-gradient(135deg, rgba(245, 245, 247, 0.98) 0%, rgba(235, 235, 240, 1) 100%);
+}
+
+.light .settings-sidebar {
+  background: rgba(0, 0, 0, 0.03);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.light .settings-tab {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.light .settings-tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+}
+
+.light .settings-tab.active {
+  background: rgba(102, 126, 234, 0.12);
+  color: #667eea;
+  border-left-color: #667eea;
+}
+
+.light .settings-section h2 {
+  color: #1a1a1a;
+}
+
+.light .section-description {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.light .theme-option span {
+  color: #1a1a1a;
+}
+
+.light .category-title {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.light .wallpaper-name {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.light .settings-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.light .settings-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
 .settings-sidebar {
   width: 200px;
   background: rgba(0, 0, 0, 0.2);
@@ -227,7 +281,8 @@
   }
 
   .settings-sidebar::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for cleaner look */
+    display: none;
+    /* Hide scrollbar for cleaner look */
   }
 
   .settings-tab {
@@ -244,7 +299,8 @@
   .settings-tab.active {
     background: #667eea;
     color: white;
-    border-left: none; /* Remove desktop active border */
+    border-left: none;
+    /* Remove desktop active border */
   }
 
   .settings-content {
@@ -294,4 +350,3 @@
     height: 100px;
   }
 }
-

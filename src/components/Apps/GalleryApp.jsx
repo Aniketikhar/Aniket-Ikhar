@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/Gallery.css';
 
 const GalleryApp = () => {
+  const { theme } = useTheme();
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     // Dynamic import of images from assets/gallary
     const imageModules = import.meta.glob('../../assets/gallary/*.{png,jpg,jpeg,webp}', { eager: true });
-    
+
     const loadedImages = Object.entries(imageModules).map(([path, module]) => {
       const fileName = path.split('/').pop();
       return {
@@ -23,7 +25,7 @@ const GalleryApp = () => {
   }, []);
 
   return (
-    <div className="gallery-app">
+    <div className={`gallery-app ${theme}`}>
       <div className="gallery-header">
         <h2>My Photos</h2>
         <span className="image-count">{images.length} Items</span>
@@ -47,14 +49,14 @@ const GalleryApp = () => {
 
       <AnimatePresence>
         {selectedImage && (
-          <motion.div 
+          <motion.div
             className="gallery-modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
-            <motion.div 
+            <motion.div
               className="gallery-modal-content"
               layoutId={selectedImage.id}
               onClick={(e) => e.stopPropagation()}

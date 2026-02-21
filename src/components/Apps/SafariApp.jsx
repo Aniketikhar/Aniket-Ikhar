@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { FaArrowLeft, FaArrowRight, FaRedo, FaSearch, FaLock, FaExternalLinkAlt } from 'react-icons/fa';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/SafariApp.css';
 
 const SafariApp = () => {
+  const { theme } = useTheme();
   const [url, setUrl] = useState('https://www.google.com');
   const [displayUrl, setDisplayUrl] = useState('google.com');
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +51,7 @@ const SafariApp = () => {
   const isGoogleHome = url.includes('google.com') && !url.includes('/search');
 
   return (
-    <div className="safari-app">
+    <div className={`safari-app ${theme}`}>
       {/* Browser Toolbar */}
       <div className="safari-toolbar">
         <div className="safari-controls">
@@ -60,8 +62,8 @@ const SafariApp = () => {
 
         <form className="safari-address-bar" onSubmit={handleSearch}>
           <FaLock className="lock-icon" size={10} />
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={displayUrl}
             onChange={(e) => setDisplayUrl(e.target.value)}
             onFocus={(e) => e.target.select()}
@@ -76,20 +78,20 @@ const SafariApp = () => {
       {/* Browser Content */}
       <div className="safari-content">
         {isLoading && <div className="safari-loader-bar"></div>}
-        
+
         {isGoogleHome ? (
           <div className="google-start-page">
             <div className="google-content">
               <h1>Google</h1>
               <form className="google-search-form" onSubmit={handleSearch}>
-                 <div className="search-input-wrapper">
-                   <FaSearch className="search-icon" />
-                   <input type="text" placeholder="Search Google or type a URL" />
-                 </div>
-                 <div className="google-buttons">
-                   <button type="button">Google Search</button>
-                   <button type="button">I'm Feeling Lucky</button>
-                 </div>
+                <div className="search-input-wrapper">
+                  <FaSearch className="search-icon" />
+                  <input type="text" placeholder="Search Google or type a URL" />
+                </div>
+                <div className="google-buttons">
+                  <button type="button">Google Search</button>
+                  <button type="button">I'm Feeling Lucky</button>
+                </div>
               </form>
 
               {/* Favorites Grid */}
@@ -108,7 +110,7 @@ const SafariApp = () => {
             <div className="iframe-overlay-hint">
               Note: Many websites (like Google, YouTube) block being displayed inside other apps.
             </div>
-            <iframe 
+            <iframe
               ref={iframeRef}
               src={url}
               title="Browser"

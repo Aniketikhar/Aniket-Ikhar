@@ -6,14 +6,16 @@
   align-items: center;
   padding: 0 20px;
   font-size: 13px;
-  background: rgba(0, 0, 0, 0.2); /* Darker glass for top bar */
+  background: rgba(0, 0, 0, 0.2);
+  /* Darker glass for top bar */
   backdrop-filter: blur(10px);
   color: white;
   z-index: 9999;
   position: relative;
 }
 
-.left-side, .right-side {
+.left-side,
+.right-side {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -47,6 +49,36 @@
 .date-time {
   font-weight: 500;
   margin-left: 8px;
+}
+
+/* Light Theme */
+.light .top-bar {
+  background: rgba(255, 255, 255, 0.5);
+  color: #1a1a1a;
+}
+
+.light .top-bar .menu-item {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.light .top-bar .menu-item:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.light .top-bar .status-icon {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.light .top-bar .control-center {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.light .top-bar .app-name {
+  color: #1a1a1a;
+}
+
+.light .top-bar .date-time {
+  color: #1a1a1a;
 }
 
 @media (max-width: 768px) {
