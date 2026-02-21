@@ -9,7 +9,7 @@ import SettingsApp from '../Apps/SettingsApp';
 import GalleryApp from '../Apps/GalleryApp';
 import SafariApp from '../Apps/SafariApp';
 import ExperienceApp from '../Apps/ExperienceApp';
-import { WindowManagerProvider, useWindowManager } from '../../context/WindowManagerContext';
+import { useWindowManager } from '../../context/WindowManagerContext';
 
 import { useTheme } from '../../context/ThemeContext';
 import '../../styles/global.css';
@@ -42,9 +42,7 @@ const DesktopContent = () => {
 };
 
 const Desktop = () => (
-  <WindowManagerProvider>
-    <DesktopContent />
-  </WindowManagerProvider>
+  <DesktopContent />
 );
 
 export default Desktop;

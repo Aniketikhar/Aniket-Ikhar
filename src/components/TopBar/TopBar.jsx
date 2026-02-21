@@ -17,8 +17,7 @@ const TopBar = () => {
   return (
     <div className="top-bar glass">
       <div className="left-side">
-        <span className="apple-logo"></span>
-        <span className="app-name font-bold">Finder</span>
+        <span className="app-name font-bold">Aniket Ikhar</span>
         <span className="menu-item">File</span>
         <span className="menu-item">Edit</span>
         <span className="menu-item">View</span>

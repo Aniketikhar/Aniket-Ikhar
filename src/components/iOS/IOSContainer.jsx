@@ -11,11 +11,13 @@ import SafariApp from '../Apps/SafariApp';
 import SettingsApp from '../Apps/SettingsApp';
 import ExperienceApp from '../Apps/ExperienceApp';
 import { useWindowManager } from '../../context/WindowManagerContext';
+import { useTheme } from '../../context/ThemeContext';
 import '../../styles/iOS.css';
 
 const IOSContainer = () => {
   const [activeApp, setActiveApp] = useState(null);
   const { windows } = useWindowManager();
+  const { theme } = useTheme();
 
   const handleAppOpen = (app) => {
     setActiveApp(app);
@@ -43,10 +45,10 @@ const IOSContainer = () => {
         return <ExperienceApp />;
       default:
         return (
-          <div style={{ 
-            padding: '40px 20px', 
+          <div style={{
+            padding: '40px 20px',
             color: 'white',
-            textAlign: 'center' 
+            textAlign: 'center'
           }}>
             <h2>{activeApp.name}</h2>
             <p>Coming soon...</p>
@@ -56,9 +58,9 @@ const IOSContainer = () => {
   };
 
   return (
-    <div className="ios-container">
+    <div className={`ios-container ${theme}`}>
       <IOSStatusBar />
-      
+
       {!activeApp && (
         <IOSHomeScreen onAppOpen={handleAppOpen} windows={windows} />
       )}
@@ -70,7 +72,7 @@ const IOSContainer = () => {
           </IOSAppView>
         )}
       </AnimatePresence>
-      
+
       <ContextMenu />
     </div>
   );
