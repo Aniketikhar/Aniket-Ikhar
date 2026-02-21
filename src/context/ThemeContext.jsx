@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
-import defaultWallpaper from '../assets/wallpaper.png';
+
+const defaultDesktopWallpaper = 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80';
+const defaultMobileWallpaper = 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80';
 
 const ThemeContext = createContext();
 
@@ -16,9 +18,13 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('app-theme') || 'dark';
   });
-  
+
+  const isMobile = window.innerWidth < 768;
+  const wallpaperKey = isMobile ? 'app-wallpaper-mobile' : 'app-wallpaper';
+  const defaultWallpaper = isMobile ? defaultMobileWallpaper : defaultDesktopWallpaper;
+
   const [wallpaper, setWallpaper] = useState(() => {
-    return localStorage.getItem('app-wallpaper') || defaultWallpaper;
+    return localStorage.getItem(wallpaperKey) || defaultWallpaper;
   });
 
   // Persist theme changes
@@ -28,7 +34,7 @@ export const ThemeProvider = ({ children }) => {
 
   // Persist wallpaper changes
   React.useEffect(() => {
-    localStorage.setItem('app-wallpaper', wallpaper);
+    localStorage.setItem(wallpaperKey, wallpaper);
   }, [wallpaper]);
 
   const toggleTheme = () => {
@@ -40,12 +46,12 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ 
-      theme, 
-      setTheme, 
-      toggleTheme, 
+    <ThemeContext.Provider value={{
+      theme,
+      setTheme,
+      toggleTheme,
       wallpaper,
-      changeWallpaper 
+      changeWallpaper
     }}>
       {children}
     </ThemeContext.Provider>
